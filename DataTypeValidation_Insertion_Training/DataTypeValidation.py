@@ -61,7 +61,7 @@ class dBOperation:
             conn = self.dataBaseConnection(DatabaseName)
             c=conn.cursor()
             c.execute("SELECT count(name)  FROM sqlite_master WHERE type = 'table' AND name = 'Good_Raw_Data'")
-            if c.fetchone()[0] ==1:             # we are checking if the table exists
+            if c.fetchone()[0] ==1:             # checking if the table exists
                 conn.close()
                 file = open("Training_Logs/DbTableCreateLog.txt", 'a+')
                 self.logger.log(file, "Tables created successfully!!")
