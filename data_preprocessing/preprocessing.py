@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
-# from sklearn.preprocessing import LabelEncoder
-from feature_engine.imputation import CategoricalImputer
+from sklearn.preprocessing import LabelEncoder
 from sklearn.utils import resample
 from sklearn.preprocessing import StandardScaler
 class Preprocessor:
@@ -239,8 +238,67 @@ class Preprocessor:
             self.logger_object.log(self.file_object,'Exception occured in encode_categorical_columns method of the Preprocessor class. Exception message:  ' + str(e))
             self.logger_object.log(self.file_object, 'encoding for categorical columns Failed. Exited the encode_categorical_columns method of the Preprocessor class')
             raise Exception()
+        
 
-    def handle_imbalanced_dataset(self,data):
+    def scaling_the_data(self,data):
+        """
+            Method Name: scaling_the_data
+            Description: This method scales the numerical features, adds dummy variables to categorical features 
+                          and combines these two into a single dataframe.
+            Output: Pandas dataframe
+            On Failure: Raise Exception 
+
+            Version: 1.0
+            Revisions: None
+        """        
+        self.logger_object.log(self.file_object, 'Entered the scaling_the_data method of the Preprocessor class')
+        self.data=data
+        try:
+            # scaling the numerical columns
+            num_df = self.scale_numerical_columns(self.data)
+            # adding dummy variables to categorical columns
+            cat_df = self.encode_categorical_columns(self.data)
+            
+            # combining the above two datasets
+            df = pd.concat([num_df,cat_df], axis=1)
+
+            self.logger_object.log(self.file_object, 'scaling and dummy inclusion successful. Exited the scaling_the_data method of the Preprocessor class')
+            return df
+
+        except Exception as e:
+            self.logger_object.log(self.file_object,'Exception occured in scaling_the_data method of the Preprocessor class. Exception message:  ' + str(e))
+            self.logger_object.log(self.file_object, 'scaling and dummy inclusion Failed. Exited the scaling_the_data method of the Preprocessor class')
+            raise Exception()
+
+
+    def encode_label_column(self,data,label_column_name):
+        """
+            Method Name: encode_label_column
+            Description: This method encodes the categorical values of label column to numeric values.
+            Output: only the label column converted to numerical values
+            On Failure: Raise Exception
+
+            Version: 1.0
+            Revisions: None
+        """
+    
+        self.logger_object.log(self.file_object, 'Entered the encode_label_column method of the Preprocessor class')
+
+        try:
+            # Using label encoding to encode the label column to numericsl ones
+            self.le = LabelEncoder()
+            data[label_column_name] = self.le.fit_transform(data[label_column_name])
+
+            self.logger_object.log(self.file_object, 'encoding for label column successful. Exited the encode_label_column method of the Preprocessor class')
+            return data 
+
+        except Exception as e:
+            self.logger_object.log(self.file_object,'Exception occured in encode_label_column method of the Preprocessor class. Exception message:  ' + str(e))
+            self.logger_object.log(self.file_object, 'encoding for label column Failed. Exited the encode_label_column method of the Preprocessor class')
+            raise Exception()    
+        
+
+    def handle_imbalanced_dataset(self,data,label_column_name):
         """
             Method Name: handle_imbalanced_dataset
             Description: This method handles the imbalanced dataset to make it a balanced one.
@@ -256,8 +314,8 @@ class Preprocessor:
         try:
             # Using a combination of oversampling and undersampling techniques to achieve more balanced representation of the classes.
             # This is also called hybrid resampling.
-            self.class_0 = data[data['salary']==0]
-            self.class_1 = data[data['salary']==1]
+            self.class_0 = data[data[label_column_name]==0]
+            self.class_1 = data[data[label_column_name]==1]
 
             class_1_resampled = resample(self.class_1, replace=True, # sample with replacement
                                          n_samples=round(data.shape[0]/2), # create half of the dataset

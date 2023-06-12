@@ -43,6 +43,8 @@ class Raw_Data_validation:
             column_names = dic['ColName']
             NumberofColumns = dic['NumberofColumns']
 
+            if not os.path.isdir("Training_Logs/"):
+                os.makedirs('Training_Logs/')
             file = open("Training_Logs/valuesfromSchemaValidationLog.txt", 'a+')
             message ="LengthOfDateStampInFile:: %s" %LengthOfDateStampInFile + "\t" + "LengthOfTimeStampInFile:: %s" % LengthOfTimeStampInFile +"\t " + "NumberofColumns:: %s" % NumberofColumns + "\n"
             self.logger.log(file,message)

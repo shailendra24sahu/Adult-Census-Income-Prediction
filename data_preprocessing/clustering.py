@@ -67,7 +67,7 @@ class KMeansClustering:
         try:
             self.kmeans = KMeans(n_clusters=number_of_clusters, init='k-means++', random_state=42)
             #self.data = self.data[~self.data.isin([np.nan, np.inf, -np.inf]).any(1)]
-            self.y_kmeans=self.kmeans.fit_predict(data) #  divide data into clusters
+            self.y_kmeans=self.kmeans.fit_predict(self.data) #  divide data into clusters
 
             self.file_op = file_methods.File_Operation(self.file_object,self.logger_object)
             self.save_model = self.file_op.save_model(self.kmeans, 'KMeans') # saving the KMeans model to directory
