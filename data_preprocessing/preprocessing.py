@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 # from sklearn.preprocessing import LabelEncoder
-from feature_engine.imputation import CategoricalImputer
 from sklearn.utils import resample
 from sklearn.preprocessing import StandardScaler
 class Preprocessor:
