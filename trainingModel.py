@@ -1,7 +1,6 @@
 """
 This is the Entry point for Training the Machine Learning Model.
 
-Written By: iNeuron Intelligence
 Version: 1.0
 Revisions: None
 
@@ -19,14 +18,13 @@ from application_logging import logger
 import numpy as np
 import pandas as pd
 
-#Creating the common Logging object
-
 
 class trainModel:
 
     def __init__(self):
         self.log_writer = logger.App_Logger()
         self.file_object = open("Training_Logs/ModelTrainingLog.txt", 'a+')
+
     def trainingModel(self):
         # Logging the start of Training
         self.log_writer.log(self.file_object, 'Start of Training')
@@ -42,10 +40,17 @@ class trainModel:
 
 
             #data.replace('?',np.NaN,inplace=True) # replacing '?' with NaN values for imputation
+            # removing outliers from the data
+            data = preprocessor.remove_outliers(data)
 
+            # encoding label feature into numerical values
+            data = preprocessor.encode_label_column(data=data, label_column_name='salary')
+
+            # handling imbalance in the dataset
+            data = preprocessor.handle_imbalanced_dataset(data=data, label_column_name='salary')
 
             # create separate features and labels
-            X,Y=preprocessor.separate_label_feature(data,label_column_name='default payment next month')
+            X,Y=preprocessor.separate_label_feature(data,label_column_name='salary')
 
 
 
@@ -55,6 +60,12 @@ class trainModel:
             # if missing values are there, replace them appropriately.
             if(is_null_present):
                 X=preprocessor.impute_missing_values(X,cols_with_missing_values) # missing value imputation
+
+            # scale the numerical columns
+            X = preprocessor.scale_numerical_columns(X)
+
+            # encode categorical columns with dummy variables
+            X = preprocessor.encode_categorical_columns(X)
 
             """ Applying the clustering approach"""
 
@@ -82,13 +93,13 @@ class trainModel:
                 # splitting the data into training and test set for each cluster one by one
                 x_train, x_test, y_train, y_test = train_test_split(cluster_features, cluster_label, test_size=1 / 3, random_state=355)
                 # Proceeding with more data pre-processing steps
-                train_x = preprocessor.scale_numerical_columns(x_train)
-                test_x = preprocessor.scale_numerical_columns(x_test)
+                # train_x = preprocessor.scale_numerical_columns(x_train)
+                # test_x = preprocessor.scale_numerical_columns(x_test)
 
                 model_finder=tuner.Model_Finder(self.file_object,self.log_writer) # object initialization
 
                 #getting the best model for each of the clusters
-                best_model_name,best_model=model_finder.get_best_model(train_x,y_train,test_x,y_test)
+                best_model_name,best_model=model_finder.get_best_model(x_train,y_train,x_test,y_test)
 
                 #saving the best model to the directory.
                 file_op = file_methods.File_Operation(self.file_object,self.log_writer)

@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-# from sklearn.preprocessing import LabelEncoder
+from sklearn.preprocessing import LabelEncoder
 from sklearn.utils import resample
 from sklearn.preprocessing import StandardScaler
 class Preprocessor:
@@ -199,13 +199,13 @@ class Preprocessor:
         self.data=data
 
         try:
-            self.num_df = self.data.select_dtypes(include=['int64']).copy()
+            self.num_df = self.data.select_dtypes(include=['int64'])
             self.scaler = StandardScaler()
-            self.scaled_data = self.scaler.fit_transform(self.num_df)
-            self.scaled_num_df = pd.DataFrame(data=self.scaled_data, columns=self.num_df.columns)
+            for col in self.num_df:
+                self.data[col] = self.scaler.fit_transform(self.data[[col]])
 
             self.logger_object.log(self.file_object, 'scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class')
-            return self.scaled_num_df
+            return self.data
 
         except Exception as e:
             self.logger_object.log(self.file_object,'Exception occured in scale_numerical_columns method of the Preprocessor class. Exception message:  ' + str(e))
@@ -228,18 +228,45 @@ class Preprocessor:
         try:
             self.cat_df = data.select_dtypes(include=['object']).copy()
             # Using the dummy encoding to encode the categorical columns to numericsl ones
-            for col in self.cat_df.columns:
-                self.cat_df = pd.get_dummies(self.cat_df, columns=[col], prefix=[col], drop_first=True)
+            dummy_df = pd.get_dummies(self.cat_df, prefix=self.cat_df.columns, drop_first=True)
+            
+            df_with_dummies = pd.concat([data.drop(self.cat_df.columns, axis=1), dummy_df], axis=1)
 
             self.logger_object.log(self.file_object, 'encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class')
-            return self.cat_df  
+            return df_with_dummies
 
         except Exception as e:
             self.logger_object.log(self.file_object,'Exception occured in encode_categorical_columns method of the Preprocessor class. Exception message:  ' + str(e))
             self.logger_object.log(self.file_object, 'encoding for categorical columns Failed. Exited the encode_categorical_columns method of the Preprocessor class')
             raise Exception()
 
-    def handle_imbalanced_dataset(self,data):
+
+    def encode_label_column(self,data,label_column_name):
+        """
+            Method Name: encode_categorical_columns
+            Description: This method encodes the label feature to numeric values.
+            Output: only the label column with categorical values converted to numerical values
+            On Failure: Raise Exception
+
+            Version: 1.0
+            Revisions: None
+        """
+    
+        self.logger_object.log(self.file_object, 'Entered the encode_label_column method of the Preprocessor class')
+
+        try:
+            self.le = LabelEncoder()
+            data[label_column_name] = self.le.fit_transform(data[label_column_name])
+
+            self.logger_object.log(self.file_object, 'encoding for label feature values successful. Exited the encode_label_column method of the Preprocessor class')
+            return data
+
+        except Exception as e:
+            self.logger_object.log(self.file_object,'Exception occured in encode_label_column method of the Preprocessor class. Exception message:  ' + str(e))
+            self.logger_object.log(self.file_object, 'encoding for label column Failed. Exited the encode_label_column method of the Preprocessor class')
+            raise Exception()
+
+    def handle_imbalanced_dataset(self,data, label_column_name):
         """
             Method Name: handle_imbalanced_dataset
             Description: This method handles the imbalanced dataset to make it a balanced one.
@@ -249,21 +276,21 @@ class Preprocessor:
             Version: 1.0
             Revisions: None
         """
-
+        self.data = data
         self.logger_object.log(self.file_object, 'Entered the handle_imbalanced_dataset method of the Preprocessor class')
 
         try:
             # Using a combination of oversampling and undersampling techniques to achieve more balanced representation of the classes.
             # This is also called hybrid resampling.
-            self.class_0 = data[data['salary']==0]
-            self.class_1 = data[data['salary']==1]
+            self.class_0 = self.data[self.data[label_column_name]==0]
+            self.class_1 = self.data[self.data[label_column_name]==1]
 
             class_1_resampled = resample(self.class_1, replace=True, # sample with replacement
-                                         n_samples=round(data.shape[0]/2), # create half of the dataset
+                                         n_samples=round(self.data.shape[0]/2), # create half of the dataset
                                          random_state=27) # reproducible results
             
             class_0_resampled = resample(self.class_0, replace=True, # sample with replacement
-                                         n_samples=round(data.shape[0]/2), # create half of the dataset
+                                         n_samples=round(self.data.shape[0]/2), # create half of the dataset
                                          random_state=27) # reproducible results
             
             self.data_balanced = pd.concat([class_0_resampled,class_1_resampled])
@@ -282,4 +309,34 @@ class Preprocessor:
                                    'Exception occured in handle_imbalanced_dataset method of the Preprocessor class. Exception message:  ' + str(e))
             self.logger_object.log(self.file_object,
                                    'dataset balancing Failed. Exited the handle_imbalanced_dataset method of the Preprocessor class')
+            raise Exception()
+
+
+    def scale_dataset(self,data):
+        """
+            Method Name: scale_dataset
+            Description: This method scales the dataset using the Standard scaler.
+            Output: A dataframe with scaled features
+            On Failure: Raise Exception
+
+            Version: 1.0
+            Revisions: None
+        """
+
+        self.logger_object.log(self.file_object,
+                               'Entered the scale_dataset method of the Preprocessor class')
+
+        self.data=data
+
+        try:
+            self.scaler = StandardScaler()
+            self.scaled_data = self.scaler.fit_transform(self.data)
+            self.scaled_df = pd.DataFrame(data=self.scaled_data, columns=self.data.columns)
+
+            self.logger_object.log(self.file_object, 'scaling of the dataset successful. Exited the scale_dataset method of the Preprocessor class')
+            return self.scaled_df
+
+        except Exception as e:
+            self.logger_object.log(self.file_object,'Exception occured in scale_dataset method of the Preprocessor class. Exception message:  ' + str(e))
+            self.logger_object.log(self.file_object, 'scaling of the dataset Failed. Exited the scale_dataset method of the Preprocessor class')
             raise Exception()

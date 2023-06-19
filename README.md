@@ -6,4 +6,6 @@ conda activate venv/
 
 pip install ipykernel
 
+pip freeze > requirements.txt
+
 pip install -r requirements.txt

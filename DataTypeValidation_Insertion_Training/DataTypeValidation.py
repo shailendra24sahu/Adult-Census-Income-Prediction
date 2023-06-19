@@ -62,7 +62,7 @@ class dBOperation:
             c=conn.cursor()
             c.execute("SELECT count(name)  FROM sqlite_master WHERE type = 'table' AND name = 'Good_Raw_Data'")
             if c.fetchone()[0] ==1:             # checking if the table exists
-                conn.close()
+                # conn.close()
                 file = open("Training_Logs/DbTableCreateLog.txt", 'a+')
                 self.logger.log(file, "Tables created successfully!!")
                 file.close()
@@ -79,11 +79,11 @@ class dBOperation:
                     # In below try block, we check if the table exists, if yes then add columns to the table
                     # else in catch block we will create the table
                     try:
-                        conn.execute('ALTER TABLE Good_Raw_Data ADD COLUMN "{column_name}" {dataType}'.format(column_name=key,dataType=type))
+                        c.execute('ALTER TABLE Good_Raw_Data ADD COLUMN "{column_name}" {dataType}'.format(column_name=key,dataType=type))
                     except:
-                        conn.execute('CREATE TABLE  Good_Raw_Data ({column_name} {dataType})'.format(column_name=key, dataType=type))
+                        c.execute('CREATE TABLE  Good_Raw_Data ({column_name} {dataType})'.format(column_name=key, dataType=type))
 
-                conn.close()
+                # conn.close()
 
                 file = open("Training_Logs/DbTableCreateLog.txt", 'a+')
                 self.logger.log(file, "Tables created successfully!!")
@@ -92,6 +92,7 @@ class dBOperation:
                 file = open("Training_Logs/DataBaseConnectionLog.txt", 'a+')
                 self.logger.log(file, "Closed %s database successfully" % DatabaseName)
                 file.close()
+            conn.close()
 
         except Exception as e:
             file = open("Training_Logs/DbTableCreateLog.txt", 'a+')
@@ -118,6 +119,7 @@ class dBOperation:
         """
 
         conn = self.dataBaseConnection(Database)
+        c = conn.cursor()
         goodFilePath= self.goodFilePath
         badFilePath = self.badFilePath
         onlyfiles = [f for f in listdir(goodFilePath)]
@@ -131,7 +133,8 @@ class dBOperation:
                     for line in enumerate(reader):
                         for list_ in (line[1]):
                             try:
-                                conn.execute('INSERT INTO Good_Raw_Data values ({values})'.format(values=(list_)))
+                                c.execute('INSERT INTO Good_Raw_Data values ({values})'.format(values=list_))
+                                # c.execute('INSERT INTO Good_Raw_Data ({column_names}) values ({values})'.format(column_names=(column_names),values=(list_)))
                                 self.logger.log(log_file," %s: File loaded successfully!!" % file)
                                 conn.commit()
                             except Exception as e:
@@ -144,7 +147,7 @@ class dBOperation:
                 shutil.move(goodFilePath+'/' + file, badFilePath)
                 self.logger.log(log_file, "File Moved Successfully %s" % file)
                 log_file.close()
-                conn.close()
+                # conn.close()
 
         conn.close()
         log_file.close()

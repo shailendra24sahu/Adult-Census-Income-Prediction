@@ -1,0 +1,23 @@
+{   "SampleFileName": "adultCensus_20230602_010222.csv",
+    "LengthOfDateStampInFile": 8,
+    "LengthOfTimeStampInFile": 6,
+    "NumberofColumns" : 15,
+    "ColName": {
+        "age": "Integer",
+        "workclass": "Object",
+        "fnlwgt": "Integer",
+        "education": "Object",
+        "education-num": "Integer",
+        "marital-status": "Object",
+        "occupation": "Object",
+        "relationship": "Object",
+        "race": "Object",
+        "sex": "Object",
+        "capital-gain": "Integer",
+        "capital-loss": "Integer",
+        "hours-per-week": "Integer",
+        "country": "Object",
+        "salary": "Object"
+    }
+
+}

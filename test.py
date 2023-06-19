@@ -1,5 +1,5 @@
 # from wsgiref import simple_server
-from flask import request
+# from flask import request
 # import os
 # from flask_cors import CORS, cross_origin
 from trainingModel import trainModel
@@ -32,4 +32,4 @@ except KeyError:
 except Exception as e:
 
     print("Error Occurred! %s" % e)
-print("Training successfull!!")
+# print("Training successfull!!")

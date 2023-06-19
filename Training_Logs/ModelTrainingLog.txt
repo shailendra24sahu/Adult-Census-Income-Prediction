@@ -1,0 +1,144 @@
+2023-06-19/11:43:59		Start of Training
+2023-06-19/11:43:59		Entered the get_data method of the Data_Getter class
+2023-06-19/11:43:59		Data Load Successful. Exited the get_data method of the Data_Getter class
+2023-06-19/11:43:59		Entered the remove_outliers method of the Preprocessor class
+2023-06-19/11:43:59		Removed outliers successfully. Exited the remove_outliers method of the Preprocessor class
+2023-06-19/11:43:59		Entered the encode_label_column method of the Preprocessor class
+2023-06-19/11:43:59		encoding for label feature values successful. Exited the encode_label_column method of the Preprocessor class
+2023-06-19/11:43:59		Entered the handle_imbalanced_dataset method of the Preprocessor class
+2023-06-19/11:43:59		dataset balancing successful. Exited the handle_imbalanced_dataset method of the Preprocessor class
+2023-06-19/11:43:59		Entered the separate_label_feature method of the Preprocessor class
+2023-06-19/11:43:59		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2023-06-19/11:43:59		Entered the is_null_present method of the Preprocessor class
+2023-06-19/11:43:59		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2023-06-19/11:43:59		Entered the scale_numerical_columns method of the Preprocessor class
+2023-06-19/11:43:59		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2023-06-19/11:43:59		Entered the encode_categorical_columns method of the Preprocessor class
+2023-06-19/11:43:59		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2023-06-19/11:43:59		Unsuccessful End of Training
+2023-06-19/11:54:00		Start of Training
+2023-06-19/11:54:00		Entered the get_data method of the Data_Getter class
+2023-06-19/11:54:00		Data Load Successful. Exited the get_data method of the Data_Getter class
+2023-06-19/11:54:00		Entered the remove_outliers method of the Preprocessor class
+2023-06-19/11:54:00		Removed outliers successfully. Exited the remove_outliers method of the Preprocessor class
+2023-06-19/11:54:00		Entered the encode_label_column method of the Preprocessor class
+2023-06-19/11:54:00		encoding for label feature values successful. Exited the encode_label_column method of the Preprocessor class
+2023-06-19/11:54:00		Entered the handle_imbalanced_dataset method of the Preprocessor class
+2023-06-19/11:54:00		dataset balancing successful. Exited the handle_imbalanced_dataset method of the Preprocessor class
+2023-06-19/11:54:00		Entered the separate_label_feature method of the Preprocessor class
+2023-06-19/11:54:00		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2023-06-19/11:54:00		Entered the is_null_present method of the Preprocessor class
+2023-06-19/11:54:00		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2023-06-19/11:54:00		Entered the scale_numerical_columns method of the Preprocessor class
+2023-06-19/11:54:00		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2023-06-19/11:54:00		Entered the encode_categorical_columns method of the Preprocessor class
+2023-06-19/11:54:00		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2023-06-19/11:54:00		Unsuccessful End of Training
+2023-06-19/11:55:26		Start of Training
+2023-06-19/11:55:26		Entered the get_data method of the Data_Getter class
+2023-06-19/11:55:26		Data Load Successful. Exited the get_data method of the Data_Getter class
+2023-06-19/11:55:26		Entered the remove_outliers method of the Preprocessor class
+2023-06-19/11:55:26		Removed outliers successfully. Exited the remove_outliers method of the Preprocessor class
+2023-06-19/11:55:26		Entered the encode_label_column method of the Preprocessor class
+2023-06-19/11:55:26		encoding for label feature values successful. Exited the encode_label_column method of the Preprocessor class
+2023-06-19/11:55:26		Entered the handle_imbalanced_dataset method of the Preprocessor class
+2023-06-19/11:55:26		dataset balancing successful. Exited the handle_imbalanced_dataset method of the Preprocessor class
+2023-06-19/11:55:26		Entered the separate_label_feature method of the Preprocessor class
+2023-06-19/11:55:26		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2023-06-19/11:55:26		Entered the is_null_present method of the Preprocessor class
+2023-06-19/11:55:26		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2023-06-19/11:55:26		Entered the scale_numerical_columns method of the Preprocessor class
+2023-06-19/11:55:26		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2023-06-19/11:55:26		Entered the encode_categorical_columns method of the Preprocessor class
+2023-06-19/11:55:26		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2023-06-19/11:55:26		Unsuccessful End of Training
+2023-06-19/12:04:10		Start of Training
+2023-06-19/12:04:10		Entered the get_data method of the Data_Getter class
+2023-06-19/12:04:10		Data Load Successful. Exited the get_data method of the Data_Getter class
+2023-06-19/12:04:10		Entered the remove_outliers method of the Preprocessor class
+2023-06-19/12:04:10		Removed outliers successfully. Exited the remove_outliers method of the Preprocessor class
+2023-06-19/12:04:10		Entered the encode_label_column method of the Preprocessor class
+2023-06-19/12:04:10		encoding for label feature values successful. Exited the encode_label_column method of the Preprocessor class
+2023-06-19/12:04:10		Entered the handle_imbalanced_dataset method of the Preprocessor class
+2023-06-19/12:04:10		dataset balancing successful. Exited the handle_imbalanced_dataset method of the Preprocessor class
+2023-06-19/12:04:10		Entered the separate_label_feature method of the Preprocessor class
+2023-06-19/12:04:10		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2023-06-19/12:04:10		Entered the is_null_present method of the Preprocessor class
+2023-06-19/12:04:10		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2023-06-19/12:04:10		Entered the scale_numerical_columns method of the Preprocessor class
+2023-06-19/12:04:10		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2023-06-19/12:04:10		Entered the encode_categorical_columns method of the Preprocessor class
+2023-06-19/12:04:10		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2023-06-19/12:04:10		Unsuccessful End of Training
+2023-06-19/13:33:24		Start of Training
+2023-06-19/13:33:24		Entered the get_data method of the Data_Getter class
+2023-06-19/13:33:24		Data Load Successful. Exited the get_data method of the Data_Getter class
+2023-06-19/13:33:24		Entered the remove_outliers method of the Preprocessor class
+2023-06-19/13:33:24		Removed outliers successfully. Exited the remove_outliers method of the Preprocessor class
+2023-06-19/13:33:24		Entered the encode_label_column method of the Preprocessor class
+2023-06-19/13:33:24		encoding for label feature values successful. Exited the encode_label_column method of the Preprocessor class
+2023-06-19/13:33:24		Entered the handle_imbalanced_dataset method of the Preprocessor class
+2023-06-19/13:33:24		dataset balancing successful. Exited the handle_imbalanced_dataset method of the Preprocessor class
+2023-06-19/13:33:24		Entered the separate_label_feature method of the Preprocessor class
+2023-06-19/13:33:24		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2023-06-19/13:33:24		Entered the is_null_present method of the Preprocessor class
+2023-06-19/13:33:24		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2023-06-19/13:33:24		Entered the scale_numerical_columns method of the Preprocessor class
+2023-06-19/13:33:24		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2023-06-19/13:33:24		Entered the encode_categorical_columns method of the Preprocessor class
+2023-06-19/13:33:24		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2023-06-19/13:33:24		Unsuccessful End of Training
+2023-06-19/13:37:37		Start of Training
+2023-06-19/13:37:37		Entered the get_data method of the Data_Getter class
+2023-06-19/13:37:37		Data Load Successful. Exited the get_data method of the Data_Getter class
+2023-06-19/13:37:37		Entered the remove_outliers method of the Preprocessor class
+2023-06-19/13:37:37		Removed outliers successfully. Exited the remove_outliers method of the Preprocessor class
+2023-06-19/13:37:37		Entered the encode_label_column method of the Preprocessor class
+2023-06-19/13:37:37		encoding for label feature values successful. Exited the encode_label_column method of the Preprocessor class
+2023-06-19/13:37:37		Entered the handle_imbalanced_dataset method of the Preprocessor class
+2023-06-19/13:37:37		dataset balancing successful. Exited the handle_imbalanced_dataset method of the Preprocessor class
+2023-06-19/13:37:37		Entered the separate_label_feature method of the Preprocessor class
+2023-06-19/13:37:37		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2023-06-19/13:37:37		Entered the is_null_present method of the Preprocessor class
+2023-06-19/13:37:37		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2023-06-19/13:37:37		Entered the scale_numerical_columns method of the Preprocessor class
+2023-06-19/13:37:37		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2023-06-19/13:37:37		Entered the encode_categorical_columns method of the Preprocessor class
+2023-06-19/13:37:37		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2023-06-19/13:37:37		Unsuccessful End of Training
+2023-06-19/13:46:20		Start of Training
+2023-06-19/13:46:20		Entered the get_data method of the Data_Getter class
+2023-06-19/13:46:20		Data Load Successful. Exited the get_data method of the Data_Getter class
+2023-06-19/13:46:20		Entered the remove_outliers method of the Preprocessor class
+2023-06-19/13:46:20		Removed outliers successfully. Exited the remove_outliers method of the Preprocessor class
+2023-06-19/13:46:20		Entered the encode_label_column method of the Preprocessor class
+2023-06-19/13:46:20		encoding for label feature values successful. Exited the encode_label_column method of the Preprocessor class
+2023-06-19/13:46:20		Entered the handle_imbalanced_dataset method of the Preprocessor class
+2023-06-19/13:46:20		dataset balancing successful. Exited the handle_imbalanced_dataset method of the Preprocessor class
+2023-06-19/13:46:20		Entered the separate_label_feature method of the Preprocessor class
+2023-06-19/13:46:20		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2023-06-19/13:46:20		Entered the is_null_present method of the Preprocessor class
+2023-06-19/13:46:20		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2023-06-19/13:46:20		Entered the scale_numerical_columns method of the Preprocessor class
+2023-06-19/13:46:20		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2023-06-19/13:46:20		Entered the encode_categorical_columns method of the Preprocessor class
+2023-06-19/13:46:20		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2023-06-19/13:46:20		Unsuccessful End of Training
+2023-06-19/15:53:24		Start of Training
+2023-06-19/15:53:24		Entered the get_data method of the Data_Getter class
+2023-06-19/15:53:25		Data Load Successful. Exited the get_data method of the Data_Getter class
+2023-06-19/15:53:25		Entered the remove_outliers method of the Preprocessor class
+2023-06-19/15:53:25		Removed outliers successfully. Exited the remove_outliers method of the Preprocessor class
+2023-06-19/15:53:25		Entered the encode_label_column method of the Preprocessor class
+2023-06-19/15:53:25		encoding for label feature values successful. Exited the encode_label_column method of the Preprocessor class
+2023-06-19/15:53:25		Entered the handle_imbalanced_dataset method of the Preprocessor class
+2023-06-19/15:53:25		dataset balancing successful. Exited the handle_imbalanced_dataset method of the Preprocessor class
+2023-06-19/15:53:25		Entered the separate_label_feature method of the Preprocessor class
+2023-06-19/15:53:25		Label Separation Successful. Exited the separate_label_feature method of the Preprocessor class
+2023-06-19/15:53:25		Entered the is_null_present method of the Preprocessor class
+2023-06-19/15:53:25		Finding missing values is a success.Data written to the null values file. Exited the is_null_present method of the Preprocessor class
+2023-06-19/15:53:25		Entered the scale_numerical_columns method of the Preprocessor class
+2023-06-19/15:53:25		scaling for numerical values successful. Exited the scale_numerical_columns method of the Preprocessor class
+2023-06-19/15:53:25		Entered the encode_categorical_columns method of the Preprocessor class
+2023-06-19/15:53:25		encoding for categorical values successful. Exited the encode_categorical_columns method of the Preprocessor class
+2023-06-19/15:53:25		Unsuccessful End of Training
