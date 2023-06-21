@@ -7,6 +7,7 @@ import csv
 from application_logging.logger import App_Logger
 
 
+
 class dBOperation:
     """
       This class shall be used for handling all the SQL operations.
@@ -105,7 +106,7 @@ class dBOperation:
             raise e
 
 
-    def insertIntoTableGoodData(self,Database):
+    def insertIntoTableGoodData(self,Database,column_names):
 
         """
             Method Name: insertIntoTableGoodData
@@ -120,6 +121,7 @@ class dBOperation:
 
         conn = self.dataBaseConnection(Database)
         c = conn.cursor()
+        self.column_names = [i for i in column_names.keys()]
         goodFilePath= self.goodFilePath
         badFilePath = self.badFilePath
         onlyfiles = [f for f in listdir(goodFilePath)]
@@ -133,7 +135,8 @@ class dBOperation:
                     for line in enumerate(reader):
                         for list_ in (line[1]):
                             try:
-                                c.execute('INSERT INTO Good_Raw_Data values ({values})'.format(values=list_))
+                                c.execute('INSERT INTO Good_Raw_Data ({column_names}) values ("{values}")'.format(column_names=(self.column_names),values=(list_)))
+                                # c.execute('INSERT INTO Good_Raw_Data values ({values})'.format(values=list_))
                                 # c.execute('INSERT INTO Good_Raw_Data ({column_names}) values ({values})'.format(column_names=(column_names),values=(list_)))
                                 self.logger.log(log_file," %s: File loaded successfully!!" % file)
                                 conn.commit()
