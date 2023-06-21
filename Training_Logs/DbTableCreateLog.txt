@@ -1,0 +1,2 @@
+2023-06-21/18:07:36		Error while creating table: 'list' object has no attribute 'keys' 
+2023-06-21/18:08:09		Error while creating table: 'list' object has no attribute 'keys' 

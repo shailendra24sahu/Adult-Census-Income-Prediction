@@ -74,15 +74,16 @@ class dBOperation:
 
             else:
 
-                for key in column_names.keys():
-                    type = column_names[key]
-
+                # for key in column_names.keys():
+                #     type = column_names[key]
+                column_names = column_names.keys()
+                type = [column_names[i] for i in column_names.keys()]
                     # In below try block, we check if the table exists, if yes then add columns to the table
                     # else in catch block we will create the table
-                    try:
-                        c.execute('ALTER TABLE Good_Raw_Data ADD COLUMN "{column_name}" {dataType}'.format(column_name=key,dataType=type))
-                    except:
-                        c.execute('CREATE TABLE  Good_Raw_Data ({column_name} {dataType})'.format(column_name=key, dataType=type))
+                    # try:
+                        # c.execute('ALTER TABLE Good_Raw_Data ADD COLUMN "{column_name}" {dataType}'.format(column_name=key,dataType=type))
+                    # except:
+                c.execute('CREATE TABLE  Good_Raw_Data ({column_name} {dataType})'.format(column_name=column_names, dataType=type))
 
                 # conn.close()
 
@@ -121,7 +122,8 @@ class dBOperation:
 
         conn = self.dataBaseConnection(Database)
         c = conn.cursor()
-        self.column_names = [i for i in column_names.keys()]
+        # self.column_names = [i for i in column_names.keys()]
+        self.column_names = column_names
         goodFilePath= self.goodFilePath
         badFilePath = self.badFilePath
         onlyfiles = [f for f in listdir(goodFilePath)]

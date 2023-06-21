@@ -42,7 +42,7 @@ class train_validation:
 
             self.log_writer.log(self.file_object, "Insertion of Data into Table started!!!!")
             # insert csv files in the table
-            self.dBOperation.insertIntoTableGoodData('Training')
+            self.dBOperation.insertIntoTableGoodData('Training', column_names=column_names)
             self.log_writer.log(self.file_object, "Insertion in Table completed!!!")
 
             self.log_writer.log(self.file_object, "Deleting Good Data Folder!!!")
