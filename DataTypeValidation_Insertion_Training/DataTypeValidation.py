@@ -63,7 +63,7 @@ class dBOperation:
             c=conn.cursor()
             c.execute("SELECT count(name)  FROM sqlite_master WHERE type = 'table' AND name = 'Good_Raw_Data'")
             if c.fetchone()[0] ==1:             # checking if the table exists
-                # conn.close()
+                conn.close()
                 file = open("Training_Logs/DbTableCreateLog.txt", 'a+')
                 self.logger.log(file, "Tables created successfully!!")
                 file.close()
@@ -76,16 +76,21 @@ class dBOperation:
 
                 # for key in column_names.keys():
                 #     type = column_names[key]
-                column_names = column_names.keys()
-                type = [column_names[i] for i in column_names.keys()]
+                self.columns = column_names
+                self.column_names = list(self.columns.keys())
+                self.type = [self.columns[i] for i in self.column_names]
                     # In below try block, we check if the table exists, if yes then add columns to the table
                     # else in catch block we will create the table
                     # try:
                         # c.execute('ALTER TABLE Good_Raw_Data ADD COLUMN "{column_name}" {dataType}'.format(column_name=key,dataType=type))
                     # except:
-                c.execute('CREATE TABLE  Good_Raw_Data ({column_name} {dataType})'.format(column_name=column_names, dataType=type))
+                try:
+                    c.execute('ALTER TABLE Good_Raw_Data ADD COLUMN "{column_name}" {dataType}').format(column_name=self.column_names, dataType=self.type)
+                except:
+                    c.execute('CREATE TABLE  Good_Raw_Data ({column_name} {dataType})'.format(column_name=self.column_names, dataType=self.type))
+                    # c.execute('CREATE TABLE  Good_Raw_Data "{column_name}" {dataType}').format(column_name=self.column_names, dataType=self.type))
 
-                # conn.close()
+                conn.close()
 
                 file = open("Training_Logs/DbTableCreateLog.txt", 'a+')
                 self.logger.log(file, "Tables created successfully!!")
@@ -94,7 +99,7 @@ class dBOperation:
                 file = open("Training_Logs/DataBaseConnectionLog.txt", 'a+')
                 self.logger.log(file, "Closed %s database successfully" % DatabaseName)
                 file.close()
-            conn.close()
+            # conn.close()
 
         except Exception as e:
             file = open("Training_Logs/DbTableCreateLog.txt", 'a+')
@@ -121,6 +126,7 @@ class dBOperation:
         """
 
         conn = self.dataBaseConnection(Database)
+        self.createTableDb('Training', column_names)  # added 23 june
         c = conn.cursor()
         # self.column_names = [i for i in column_names.keys()]
         self.column_names = column_names
@@ -134,14 +140,19 @@ class dBOperation:
                 with open(goodFilePath+'/'+file, "r") as f:
                     next(f)
                     reader = csv.reader(f, delimiter="\n")
+                    self.logger.log(log_file," %s: File loaded successfully till line 142 DataTypeValidation!!" % file)   # adding it to check
                     for line in enumerate(reader):
+                        self.logger.log(log_file," %s: File loaded successfully till line 144 DataTypeValidation!!" % file)   # adding it to check
                         for list_ in (line[1]):
+                            self.logger.log(log_file," %s: File loaded successfully till line 146 DataTypeValidation!!" % file)   # adding it to check
                             try:
-                                c.execute('INSERT INTO Good_Raw_Data ({column_names}) values ("{values}")'.format(column_names=(self.column_names),values=(list_)))
+                                c.execute('INSERT INTO Good_Raw_Data {column_names} values {values}'.format(column_names=(self.column_names),values=(list_)))
+                                self.logger.log(log_file," %s: File loaded successfully till line 149 DataTypeValidation!!" % file)   # adding it to check
                                 # c.execute('INSERT INTO Good_Raw_Data values ({values})'.format(values=list_))
                                 # c.execute('INSERT INTO Good_Raw_Data ({column_names}) values ({values})'.format(column_names=(column_names),values=(list_)))
                                 self.logger.log(log_file," %s: File loaded successfully!!" % file)
                                 conn.commit()
+                                self.logger.log(log_file," %s: conn.commit() happened line 154 DataTypeValidation!!" % file)   # adding it to check
                             except Exception as e:
                                 raise e
 
