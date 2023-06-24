@@ -1,42 +1,7 @@
-2023-06-23/13:36:30		Start of Training
-2023-06-23/13:36:30		Entered the get_data method of the Data_Getter class
-2023-06-23/13:36:30		Data Load Successful. Exited the get_data method of the Data_Getter class
-2023-06-23/13:36:30		Entered the remove_outliers method of the Preprocessor class
-2023-06-23/13:36:30		Exception occured in remove_outliers method of the Preprocessor class. Exception message:  'age'
-2023-06-23/13:36:30		Removing outliers failed. Exited the remove_outliers method of the Preprocessor class
-2023-06-23/13:36:30		Unsuccessful End of Training
-2023-06-23/13:49:04		Start of Training
-2023-06-23/13:49:04		Entered the get_data method of the Data_Getter class
-2023-06-23/13:49:04		Data Load Successful. Exited the get_data method of the Data_Getter class
-2023-06-23/13:49:04		Entered the remove_outliers method of the Preprocessor class
-2023-06-23/13:49:04		Exception occured in remove_outliers method of the Preprocessor class. Exception message:  'age'
-2023-06-23/13:49:04		Removing outliers failed. Exited the remove_outliers method of the Preprocessor class
-2023-06-23/13:49:04		Unsuccessful End of Training
-2023-06-23/13:53:49		Start of Training
-2023-06-23/13:53:49		Entered the get_data method of the Data_Getter class
-2023-06-23/13:53:49		Data Load Successful. Exited the get_data method of the Data_Getter class
-2023-06-23/13:53:49		Entered the remove_outliers method of the Preprocessor class
-2023-06-23/13:53:49		Exception occured in remove_outliers method of the Preprocessor class. Exception message:  'age'
-2023-06-23/13:53:49		Removing outliers failed. Exited the remove_outliers method of the Preprocessor class
-2023-06-23/13:53:49		Unsuccessful End of Training
-2023-06-23/13:56:17		Start of Training
-2023-06-23/13:56:17		Entered the get_data method of the Data_Getter class
-2023-06-23/13:56:17		Data Load Successful. Exited the get_data method of the Data_Getter class
-2023-06-23/13:56:17		Entered the remove_outliers method of the Preprocessor class
-2023-06-23/13:56:17		Exception occured in remove_outliers method of the Preprocessor class. Exception message:  'age'
-2023-06-23/13:56:17		Removing outliers failed. Exited the remove_outliers method of the Preprocessor class
-2023-06-23/13:56:17		Unsuccessful End of Training
-2023-06-23/14:06:14		Start of Training
-2023-06-23/14:06:14		Entered the get_data method of the Data_Getter class
-2023-06-23/14:06:14		Data Load Successful. Exited the get_data method of the Data_Getter class
-2023-06-23/14:06:14		Entered the remove_outliers method of the Preprocessor class
-2023-06-23/14:06:14		Exception occured in remove_outliers method of the Preprocessor class. Exception message:  'age'
-2023-06-23/14:06:14		Removing outliers failed. Exited the remove_outliers method of the Preprocessor class
-2023-06-23/14:06:14		Unsuccessful End of Training
-2023-06-23/14:10:26		Start of Training
-2023-06-23/14:10:26		Entered the get_data method of the Data_Getter class
-2023-06-23/14:10:26		Data Load Successful. Exited the get_data method of the Data_Getter class
-2023-06-23/14:10:26		Entered the remove_outliers method of the Preprocessor class
-2023-06-23/14:10:26		Exception occured in remove_outliers method of the Preprocessor class. Exception message:  'age'
-2023-06-23/14:10:26		Removing outliers failed. Exited the remove_outliers method of the Preprocessor class
-2023-06-23/14:10:26		Unsuccessful End of Training
+2023-06-24/14:04:53		Start of Training
+2023-06-24/14:04:53		Entered the get_data method of the Data_Getter class
+2023-06-24/14:04:53		Data Load Successful. Exited the get_data method of the Data_Getter class
+2023-06-24/14:04:53		Entered the remove_outliers method of the Preprocessor class
+2023-06-24/14:04:53		Exception occured in remove_outliers method of the Preprocessor class. Exception message:  'age'
+2023-06-24/14:04:53		Removing outliers failed. Exited the remove_outliers method of the Preprocessor class
+2023-06-24/14:04:53		Unsuccessful End of Training

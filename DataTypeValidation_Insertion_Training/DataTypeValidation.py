@@ -127,7 +127,7 @@ class dBOperation:
 
         conn = self.dataBaseConnection(Database)
         self.createTableDb('Training', column_names)  # added 23 june
-        c = conn.cursor()
+        # c = conn.cursor()
         # self.column_names = [i for i in column_names.keys()]
         self.column_names = column_names
         goodFilePath= self.goodFilePath
@@ -140,19 +140,15 @@ class dBOperation:
                 with open(goodFilePath+'/'+file, "r") as f:
                     next(f)
                     reader = csv.reader(f, delimiter="\n")
-                    self.logger.log(log_file," %s: File loaded successfully till line 142 DataTypeValidation!!" % file)   # adding it to check
                     for line in enumerate(reader):
-                        self.logger.log(log_file," %s: File loaded successfully till line 144 DataTypeValidation!!" % file)   # adding it to check
                         for list_ in (line[1]):
-                            self.logger.log(log_file," %s: File loaded successfully till line 146 DataTypeValidation!!" % file)   # adding it to check
                             try:
-                                c.execute('INSERT INTO Good_Raw_Data {column_names} values {values}'.format(column_names=(self.column_names),values=(list_)))
-                                self.logger.log(log_file," %s: File loaded successfully till line 149 DataTypeValidation!!" % file)   # adding it to check
-                                # c.execute('INSERT INTO Good_Raw_Data values ({values})'.format(values=list_))
+                                # c.execute('INSERT INTO Good_Raw_Data {column_names} values {values}'.format(column_names=(self.column_names),values=(list_)))
+                                conn.execute('INSERT INTO Good_Raw_Data values (?)', (list_,))
+                                # conn.execute('INSERT INTO Good_Raw_Data values ({values})'.format(values=list_))
                                 # c.execute('INSERT INTO Good_Raw_Data ({column_names}) values ({values})'.format(column_names=(column_names),values=(list_)))
                                 self.logger.log(log_file," %s: File loaded successfully!!" % file)
                                 conn.commit()
-                                self.logger.log(log_file," %s: conn.commit() happened line 154 DataTypeValidation!!" % file)   # adding it to check
                             except Exception as e:
                                 raise e
 
